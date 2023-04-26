@@ -191,4 +191,5 @@ void insert(int arr[], int n)
 }
 void merge(int arr[], int n)
 {
+    
 }
