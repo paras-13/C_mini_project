@@ -38,7 +38,7 @@ int class[10], attended[10], course_att[10];
 int entry();
 void Register();
 int Login();
-int reg_check(int reg_no);
+int reg_check();
 int Insert();
 void calc();
 void Display();
@@ -87,10 +87,11 @@ void Register()
     int allow;
     fp = fopen("details.txt", "a");
     printf("Register yourself :- \n");
-    struct user;
+    struct details;
     printf("Registration Number :- ");
     scanf("%d", &user.reg_no);
-    allow = reg_check(user.reg_no); // this is to check whether the user is pre - registered or not
+    r_num = user.reg_no;
+    allow = reg_check(); // this is to check whether the user is pre - registered or not
 
     if (allow)
     {
@@ -99,33 +100,38 @@ void Register()
     }
     else
     {
+        user.reg_no = r_num;
         printf("Username :- ");
         scanf("%s", user.username);
         printf("Set a password, (Min length =8, Max = 20) :- ");
         scanf("%s", user.pass);
         fwrite(&user, sizeof(user), 1, fp);
         fclose(fp);
+        printf("\n xxxxxxxxxxx Registered Successfully xxxxxxxxxxxxxxxx\n");
         printf("Directing you toward login page //\n");
         Login(); // Finally user is directed to Login after successfully registering him/her self.
     }
 }
 
 // This function checks for pre-registered user trying to register again.
-int reg_check(int reg_no)
+int reg_check()
 {
     FILE *fp;
+    int flag = 0;
     fp = fopen("details.txt", "r");
-    struct details;
-    while (fread(&user, sizeof(user), 1, fp))
+    struct details u1;
+    while (fread(&u1, sizeof(u1), 1, fp))
     {
-        if (user.reg_no == reg_no)
+        if (u1.reg_no == r_num)
         {
-            return 1;
+            flag = 1;
             break;
         }
-        else
-            return 0;
     }
+    if (flag == 1)
+    return 1;
+    else
+    return 0;
 }
 
 // This function allows user to Login. After successfully logged in this function directs user to perform further other functionalities.
@@ -139,7 +145,6 @@ int Login()
 
     printf("Enter you reg_no = ");
     scanf("%d", &reg);
-    r_num = reg;
     printf("Enter your password = ");
     scanf("%s", pas);
 
