@@ -11,7 +11,7 @@
 // Global Structures
 struct details
 {
-    int reg_no;
+    int reg_no; 
     char username[20];
     char pass[20];
 } user;
@@ -251,12 +251,14 @@ void Display()
     else
     {
         Sleep(3000);
-        printf("Name\t\tRegistration_no \tClass_Section\tRoll_no \tCGPA\tAttendance\tStatus\n");
+        printf("\t\tName\t\tRegistration_no \tClass_Section\tRoll_no \tCGPA\tAttendance\tStatus\n");
+        printf("-----------------------------------------------------------------------------------------------------------------------------------\n");
         while (fread(&stu, sizeof(stu), 1, fp))
         {
-            printf("%s\t %d\t %s\t\t %d\t %.2f\t %d\t\t %c\n", stu.name, stu.reg_no, stu.class_section, stu.roll_no, stu.cgpa, stu.att, stu.elig);
+            printf("\t\t%s\t %d\t\t %s\t\t %d\t\t %.2f\t %d\t\t %c\n", stu.name, stu.reg_no, stu.class_section, stu.roll_no, stu.cgpa, stu.att, stu.elig);
         }
     }
+    printf("---------------------------------------------------------------------------------------------------------------------------------------\n");
     printf("Here --> \n T:- represents = eligible for End Term Examinations\nF :- represents not eligible for End Term Examinations");
     fclose(fp);
 }
@@ -370,7 +372,7 @@ int main()
     label:
         while (flag)
         {
-            printf("\n\nEnter your choice :- \n(1) to Insert\n(2) to Display\n(3) to Search\n(4) to Delete\n(5) to Check_Status\n(6) to Exit\n> ");
+            printf("\n\nEnter your choice : Press :- \n(1) to Insert\n(2) to Display\n(3) to Search\n(4) to Delete\n(5) to Check_Status\n(6) to Exit\n> ");
             scanf("%d", &choice);
             switch (choice)
             {
@@ -385,8 +387,8 @@ int main()
                 break;
             case 4:
                 fflush(stdin);
-                printf("CAUTION :- Please verify ones again before deleting any record");
-                printf("Press 1 if you want to recheck the record otherwise Press ANY key excluding 1 to continue deleting the record\n");
+                printf("CAUTION :- Please verify ones again before deleting any record\n");
+                printf("Press 1 --> to recheck the record. || Press ANY key excluding 1 to continue deleting the record\n");
                 scanf("%c", &ch);
                 if (ch == '1')
                 {
