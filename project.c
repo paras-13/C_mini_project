@@ -51,8 +51,13 @@ void Check_Status();
 int entry()
 {
     int result;
-    printf(" \n################ Welcome to STUDENT ATTENDANCE CALCULATOR #####################\n");
-    printf("With the help of this portal you can check your attendance update, attendance record maintained in each course and total net attendance.\n");
+    printf(" \n\t\t\t################ Welcome to STUDENT ATTENDANCE CALCULATOR #####################\n\n");
+    printf("With the help of this portal user can check attendance update, attendance record maintained in each course and total net attendance.\n");\
+    printf("--> User can Insert a new student record\n");
+    printf("--> User can Delete existing student record\n");
+    printf("--> User can Display all existing student record\n");
+    printf("--> User can Search for a particular student record\n");
+
     char entry[20];
     printf("\nIf you are new to this portal REGISTER yourself; if pre-registered then LOGIN :-\n");
     printf("Enter '--register' command to register your self otherwise type '--login' command to login\n> ");
