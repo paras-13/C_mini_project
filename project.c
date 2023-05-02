@@ -1,4 +1,5 @@
 /* @author :- Paras Upadhyay */
+
 // Studence Attendance Calculator
 
 //Header Files 
@@ -38,7 +39,7 @@ int class[10], attended[10], course_att[10];
 int entry();
 void Register();
 int Login();
-int reg_check();
+int reg_check(int reg_no);
 int Insert();
 void calc();
 void Display();
@@ -96,7 +97,7 @@ void Register()
     printf("Registration Number :- ");
     scanf("%d", &user.reg_no);
     r_num = user.reg_no;
-    allow = reg_check(); // this is to check whether the user is pre - registered or not
+    allow = reg_check(user.reg_no); // this is to check whether the user is pre - registered or not
 
     if (allow)
     {
@@ -119,15 +120,15 @@ void Register()
 }
 
 // This function checks for pre-registered user trying to register again.
-int reg_check()
+int reg_check(int reg_no)
 {
     FILE *fp;
     int flag = 0;
     fp = fopen("details.txt", "r");
-    struct details u1;
-    while (fread(&u1, sizeof(u1), 1, fp))
+    struct details;
+    while (fread(&user, sizeof(user), 1, fp))
     {
-        if (u1.reg_no == r_num)
+        if (user.reg_no == reg_no)
         {
             flag = 1;
             break;
@@ -209,7 +210,9 @@ int Insert()
     fflush(stdin);
     printf("\nEnter student name :- ");
     gets(stu.name);
-    stu.reg_no = r_num;
+    printf("Enter your registration number:-");
+    scanf("%d",&stu.reg_no);
+    fflush(stdin);
     printf("Enter class and section name :- ");
     gets(stu.class_section);
     printf("Enter roll no :- ");
@@ -225,6 +228,7 @@ int Insert()
     {
         printf("%d Course code = ", i + 1);
         scanf("%s", course[i]);
+        fflush(stdin);
         printf("Classes to attend per week in %s = ", course[i]);
         scanf("%d", &class[i]);
         printf("\n");
@@ -255,7 +259,7 @@ void Display()
     }
     else
     {
-        Sleep(3000);
+        Sleep(2000);
         printf("\t\tName\t\tRegistration_no \tClass_Section\tRoll_no \tCGPA\tAttendance\tStatus\n");
         printf("-----------------------------------------------------------------------------------------------------------------------------------\n");
         while (fread(&stu, sizeof(stu), 1, fp))
