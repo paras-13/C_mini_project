@@ -43,7 +43,7 @@ int reg_check(int reg_no);
 int Insert();
 void calc();
 void Display();
-void Search();
+void Search(); 
 void Delete();
 void Check_Status();
 
@@ -381,7 +381,7 @@ int main()
     label:
         while (flag)
         {
-            printf("\n\nEnter your choice : Press :- \n(1) to Insert\n(2) to Display\n(3) to Search\n(4) to Delete\n(5) to Check_Status\n(6) to Exit\n> ");
+            printf("\n\nEnter your choice : Press :- \n(1) to Insert record\n(2) to Display record\n(3) to Search record\n(4) to Delete record\n(5) to Check_Status record\n(6) to Exit\n> ");
             scanf("%d", &choice);
             switch (choice)
             {
