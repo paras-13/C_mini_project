@@ -7,7 +7,7 @@
 #include <string.h>
 #include <windows.h>
 #include <conio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 
 // Global Structures
 struct details
