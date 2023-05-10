@@ -9,11 +9,13 @@
 
 // Some important operations in two - Dimensional array
 #include <stdio.h>
+#include<math.h>
 
 // --> operat1() :- To red and display a 3 x 3 matrix.
 void operat1();
 void operat2();
 void operat3();
+void operat4();
 int main()
 {
     int ch;
@@ -29,6 +31,9 @@ int main()
         break;
     case 3:
         operat3();
+        break;
+    case 4:
+        operat4();
         break;
     default:
         printf("Wrong input");
@@ -62,6 +67,7 @@ void operat2()
 
     // Transpose
     // Program to transpose a 3x 3 matrix
+    printf("Transpose of a matrix....\n");
     printf("Enter elements for a 3 x 3 matrix --> ");
     int i, j, mat[3][3], t_mat[3][3];
     for (i = 0; i < 3; i++)
@@ -97,6 +103,7 @@ void operat2()
 void operat3()
 {
     // To take two m x n matrices and calculate the sum of their respective elements and stre it in a third m x n matrix.
+    printf("Sum of two matrices....\n");
     int n1, n2, i, j;
     printf("Enter the number of row and column you want in both matrix...\n");
     printf("Rows = ");
@@ -135,18 +142,74 @@ void operat3()
     {
         for (j = 0; j < n2; j++)
             printf("%3d", mat1[i][j]);
-        if (i == 1)
+        if (i == floor(n1/2))
             printf("\t+\t");
         else
             printf("\t \t");
         for (j = 0; j < n2; j++)
             printf("%3d", mat2[i][j]);
-        if (i == 1)
+        if (i == floor(n1/2))
             printf("\t=\t");
         else
             printf("\t \t");
         for (j = 0; j < n2; j++)
             printf("%3d", s_mat[i][j]);
+        printf("\n");
+    }
+}
+void operat4()
+{
+    // Program to multiply two  m x n matrices
+    printf("Product of two matrices...\n");
+    int n1, n2, i, j;
+    printf("Enter the number of row and column you want in both matrix...\n");
+    printf("Rows = ");
+    scanf("%d", &n1);
+    printf("Columns = ");
+    scanf("%d", &n2);
+    int mat1[n1][n2];
+    int mat2[n1][n2];
+    int m_mat[n1][n2];
+    printf("Enter elements for 1st matrix:- \n");
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+        {
+            printf("[%d][%d] = ", i, j);
+            scanf("%d", &mat1[i][j]);
+        }
+    }
+    printf("Enter elements for 2nd matrix:- \n");
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+        {
+            printf("[%d][%d] = ", i, j);
+            scanf("%d", &mat2[i][j]);
+        }
+    }
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+            m_mat[i][j] = mat1[i][j] * mat2[i][j];
+    }
+    printf("Product of both the matrices :-\n");
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+            printf("%3d", mat1[i][j]);
+        if (i == floor(n1/2))
+            printf("\tX\t");
+        else
+            printf("\t \t");
+        for (j = 0; j < n2; j++)
+            printf("%3d", mat2[i][j]);
+        if (i == floor(n1/2))
+            printf("\t=\t");
+        else
+            printf("\t \t");
+        for (j = 0; j < n2; j++)
+            printf("%3d", m_mat[i][j]);
         printf("\n");
     }
 }
