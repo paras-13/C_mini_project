@@ -13,7 +13,7 @@
 // --> operat1() :- To red and display a 3 x 3 matrix.
 void operat1();
 void operat2();
-vois operat3();
+void operat3();
 int main()
 {
     int ch;
@@ -59,7 +59,7 @@ void operat1()
 
 void operat2()
 {
-    
+
     // Transpose
     // Program to transpose a 3x 3 matrix
     printf("Enter elements for a 3 x 3 matrix --> ");
@@ -97,7 +97,56 @@ void operat2()
 void operat3()
 {
     // To take two m x n matrices and calculate the sum of their respective elements and stre it in a third m x n matrix.
-    int n1, n2;
-    printf("For square matrix enter enter the number of row or column ");
-    scanf("%d",&)
-}   
+    int n1, n2, i, j;
+    printf("Enter the number of row and column you want in both matrix...\n");
+    printf("Rows = ");
+    scanf("%d", &n1);
+    printf("Columns = ");
+    scanf("%d", &n2);
+    int mat1[n1][n2];
+    int mat2[n1][n2];
+    int s_mat[n1][n2];
+    printf("Enter elements for 1st matrix:- \n");
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+        {
+            printf("[%d][%d] = ", i, j);
+            scanf("%d", &mat1[i][j]);
+        }
+    }
+    printf("Enter elements for 2nd matrix:- \n");
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+        {
+            printf("[%d][%d] = ", i, j);
+            scanf("%d", &mat2[i][j]);
+        }
+    }
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+            s_mat[i][j] = mat1[i][j] + mat2[i][j];
+    }
+
+    printf("Sum of both the matrix :-\n");
+    for (i = 0; i < n1; i++)
+    {
+        for (j = 0; j < n2; j++)
+            printf("%3d", mat1[i][j]);
+        if (i == 1)
+            printf("\t+\t");
+        else
+            printf("\t \t");
+        for (j = 0; j < n2; j++)
+            printf("%3d", mat2[i][j]);
+        if (i == 1)
+            printf("\t=\t");
+        else
+            printf("\t \t");
+        for (j = 0; j < n2; j++)
+            printf("%3d", s_mat[i][j]);
+        printf("\n");
+    }
+}
